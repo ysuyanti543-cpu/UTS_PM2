@@ -1,16 +1,30 @@
-# fluttter
+# Aplikasi Pemesanan — UTS Mobile Programming
 
-A new Flutter project.
+Repositori ini berisi proyek aplikasi pemesanan sederhana yang dikembangkan sebagai bagian dari Ujian Tengah Semester. Aplikasi menampilkan daftar produk, keranjang belanja, hingga halaman ringkasan pesanan (Order Summary).  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🧩 Fitur Utama Aplikasi
+- Menampilkan daftar item yang dapat dibeli
+- Menambah & mengurangi jumlah pesanan
+- Perhitungan total harga berdasarkan isi keranjang
+- Halaman Ringkasan Pesanan (Order Summary)
+- **Bonus UTS: Diskon otomatis 10% untuk pembelian di atas Rp100.000**
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🏷️ **Fitur Bonus: Diskon 10%**
+Fitur tambahan ini memberikan potongan **10%** apabila nilai subtotal belanja melebihi **Rp100.000**.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Diskon dihitung secara otomatis dan ditampilkan pada halaman `order_summary_page.dart`.
+
+### 📘 **Logika Perhitungan**
+```dart
+double hitungDiskon(double subtotal) {
+  return subtotal > 100000 ? subtotal * 0.10 : 0;
+}
+
+double totalAkhir(double subtotal) {
+  final diskon = hitungDiskon(subtotal);
+  return subtotal - diskon;
+}
